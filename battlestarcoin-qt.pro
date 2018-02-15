@@ -125,6 +125,9 @@ QMAKE_CLEAN += $$PWD/src/leveldb/libleveldb.a; cd $$PWD/src/leveldb ; $(MAKE) cl
     DEFINES += HAVE_BUILD_INFO
 }
 
+macx:deploy.commands = export QTDIR=/usr/local/Cellar/qt/5.9.1 && python2.7 contrib/macdeploy/macdeployqtplus BattlestarCoin-Qt.app -add-qt-tr en -dmg -fancy contrib/macdeploy/fancy.plist
+macx:QMAKE_EXTRA_TARGETS += deploy
+
 contains(USE_O3, 1) {
     message(Building O3 optimization flag)
     QMAKE_CXXFLAGS_RELEASE -= -O2
